@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="tr-TR">
-	<html>
 		<head>
 			<title>duyurular</title>
 			<meta http-equiv="Content-Type" content="text/HTML; charset=utf-8" />
 		</head>
 		<body>
 			<?php
+            echo '<h4>v4</h4>';
 			echo "==================================<br>&nbsp;&nbsp;Mert Neşvat 2012 =====================<br>==================================<br>";
 			require_once("fonksiyonlar3.php");
 			$last_attention = dosyadan_oku("son_duyuru.txt");
@@ -17,7 +17,7 @@
             /* mail('kocaeliduyuru@gmail.com','Baslik : '.$last_attention[0].'Yayinlayan : '.$last_attention[1].'Konu : '.$last_attention[2].'Tarih : '.$last_attention[3].'Aciklama : '.$last_attention[4]
             ,':)'); */
             echo '<br> Son Duyuru = '.$last_attention[0];
-			for($i = 0 ; $i < 10 ; $i++)
+			for($i = 0 ; $i < 3 ; $i++)
             {
                 $attention = duyuru_oku($i);
                 echo '<br> Okunan Duyuru = '.$attention[0];
@@ -28,6 +28,10 @@
                     $attention[$n] = str_replace("&nbsp;", '', $attention[$n]);                
                     $attention[$n] = str_replace("&nbsp", '', $attention[$n]);                
                     $attention[$n] = str_replace("nbsp", '', $attention[$n]);                
+                }
+
+                if($attention[0] == '' || $attention[1] == '' || $attention[2] == ''){
+                    break;
                 }
                 
                 if( !strcmp($last_attention[0], $attention[0]) && !strcmp($last_attention[1], $attention[1]) )
@@ -40,9 +44,9 @@
                 $gonderilecek[$i] = $attention ;
 
 
-//                mail('kocaeliduyuru@gmail.com','Baslik : '.$attention[0].'Yayinlayan : '.$attention[1].'Konu : '.$attention[2].'Tarih : '.$attention[3].'Aciklama : '.$attention[4]
-//                ,':)');
-                
+                mail('kocaeliduyuru@gmail.com','Baslik : '.$attention[0].'Yayinlayan : '.$attention[1].'Konu : '.$attention[2].'Tarih : '.$attention[3].'Aciklama : '.$attention[4]
+                ,':)');
+
             }
             echo 'i = '.$i;
             if($i == 0)die("<br><b> Simdilik Yeni Duyuru Yok!</b>");
