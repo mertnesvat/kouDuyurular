@@ -38,10 +38,10 @@
                 
                 
                 $gonderilecek[$i] = $attention ;
-                
-                
-                mail('kocaeliduyuru@gmail.com','Baslik : '.$attention[0].'Yayinlayan : '.$attention[1].'Konu : '.$attention[2].'Tarih : '.$attention[3].'Aciklama : '.$attention[4]
-                ,':)');
+
+
+//                mail('kocaeliduyuru@gmail.com','Baslik : '.$attention[0].'Yayinlayan : '.$attention[1].'Konu : '.$attention[2].'Tarih : '.$attention[3].'Aciklama : '.$attention[4]
+//                ,':)');
                 
             }
             echo 'i = '.$i;
